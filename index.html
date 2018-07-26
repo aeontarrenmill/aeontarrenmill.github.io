@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Do+Hyeon">
 	<style type="text/css">
 		body  {
     		background-image: url("images/background_horde.jpg");
     		background-repeat:no-repeat;
     		background-size:100% 100vh;
+			font-family: 'Do Hyeon', serif;
+			font-size: 14px;
+			color: #994d00;
 		}
 		
-		@font-face {
-			font-family: myFirstFont;
-			src: url(fonts/font.tff);
-		}
-
-		* {
-			font-family: myFirstFont;
-		}
+	@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
+	font-family: 'Do Hyeon', sans-serif;
 	</style>	
 </head>
 <body>
@@ -59,11 +58,12 @@ function workit(json) {
 		
 		var thumbnail = json.members[i].character.thumbnail;
 		var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg";
+		var charName  = json.members[i].character.name
 		if (i == 0) {
-			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2>The @font-face Rule</h1>'
+			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2>'
 		} else {
-			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img>'
-		}		
+			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2>'
+		}
 	}
 	var div = document.createElement('div');
 	div.setAttribute("id", "div0");
@@ -73,6 +73,7 @@ function workit(json) {
 	for (var i = 0; i < 7; i++) {
 		var currentIdImg = "img" + i;
 		var currentIdFrame = "frame" + i;
+		var currentIdText = "txt" + i;
 		var leftOffsetImg = baseLeftImg;
 		var leftOffsetFrame = baseLeftFrame;
 		
@@ -83,8 +84,9 @@ function workit(json) {
 		baseLeftImg = leftOffsetImg + frameWidthAndHeight + offsetX;
 		baseLeftFrame = leftOffsetFrame + frameWidthAndHeight + offsetX;
 		
-		repositionElement(currentIdImg, leftOffsetImg + "px", 20 + "px");
+		repositionElement(currentIdImg, leftOffsetImg + "px", 25 + "px");
 		repositionElement(currentIdFrame, leftOffsetFrame + "px", -10 + "px");
+		repositionElement(currentIdText, (leftOffsetImg + 120) + "px", 5 + "px");
 	}
 }
 
