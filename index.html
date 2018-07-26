@@ -1,18 +1,62 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<style type="text/css">
+		body  {
+    		background-image: url("images/background_horde.jpg");
+    		background-repeat:no-repeat;
+    		background-size:100% 100vh;
+		}
+	</style>	
+</head>
 <body>
   <script type="text/javascript">
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        // Typical action to be performed when the document is ready:
-       console.log(this.responseText)
+       var rawJson = this.responseText
+       var json = JSON.parse(rawJson)
+       workit(json)
     }
 };
 xhttp.open("GET", "https://eu.api.battle.net/wow/guild/dentarg/AeoN?fields=members&locale=en_GB&apikey=vra69wc2sq5c6kfmqachabmyugxgsh56", true);
 xhttp.send();
-  </script>
-<h1>Hello World</h1>
-<p>Im hosted with GitHub Pages.</p>
+
+function workit(json) {
+  
+
+  var thumbnail = json.members[0].character.thumbnail
+  var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
+
+  var frame = "images/frame.png"
+
+  var div = document.createElement('div');
+  div.setAttribute("id", "div0");
+  div.innerHTML = '<img id="img1" src=' + thumbnail + ' width="78" height="78"><img><img id="img2" src=' + frame + ' width="160" height="160"><img>';
+  document.body.appendChild(div);
+  
+  var d1 = document.getElementById('img1');
+	d1.style.position = "absolute";
+	d1.style.left = '24px';
+	d1.style.top = '19px';
+
+  var d2 = document.getElementById('img2');
+	d2.style.position = "absolute";
+	d2.style.left = '0px';
+	d2.style.top = '-13px';
+  console.log(thumbnail)
+
+}
+
+function returnCharacterImgID(thumbnail) {
+	var characterImgId = thumbnail
+	var characterImgId = characterImgId.split("-")
+	var characterImgId = characterImgId[0];
+	return characterImgId
+}
+</script>
+	<h1>Hello World</h1>
+	<p>Im hosted with GitHub Pages.</p>
 </body>
 </html>
