@@ -24,39 +24,73 @@ xhttp.open("GET", "https://eu.api.battle.net/wow/guild/dentarg/AeoN?fields=membe
 xhttp.send();
 
 function workit(json) {
-  
+	var frame = "images/frame.png"
+	var maxWidth = window.innerWidth;
+	var maxHeight = window.innerHeight;
+	var maxPortraitsPerLine = maxWidth / 190;
+	var membersLength = json.members.length;
+	
+	var baseLeftImg = 54;
+	var baseTopImg = 29;
+	var baseLeftFrame = 30;
+	var baseTopFrame = -13;
+	
+	var imgWidthAndHeight = 78;
+	var frameWidthAndHeight = 160;
+	
+	var offsetX = 90;
+	var offsetY = 20;
+	
+	var line = 1;
+	var resultingInnerHtml;
+	
+	console.log(json)
+		
+	for (var i = 0;i < 7; i++) {
+		
+		var thumbnail = json.members[i].character.thumbnail;
+		var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg";
+		if (i == 0) {
+			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img>'
+		} else {
+			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img>'
+		}		
+	}
+	var div = document.createElement('div');
+	div.setAttribute("id", "div0");
+	div.innerHTML = resultingInnerHtml;
+	document.body.appendChild(div);
+	
+	for (var i = 0; i < 7; i++) {
+		var currentIdImg = "img" + i;
+		var currentIdFrame = "frame" + i;
+		var leftOffsetImg = baseLeftImg;
+		var leftOffsetFrame = baseLeftFrame;
+		
+		/*
+		var topOffsetImg = document.getElementById(currentIdImg).offsetTop;
+		var topOffsetFrame = document.getElementById(currentIdFrame).offsetLeft;
+		*/
+		baseLeftImg = leftOffsetImg + frameWidthAndHeight + offsetX;
+		baseLeftFrame = leftOffsetFrame + frameWidthAndHeight + offsetX;
+		
+		repositionElement(currentIdImg, leftOffsetImg + "px", 20 + "px");
+		repositionElement(currentIdFrame, leftOffsetFrame + "px", -10 + "px");
+	}
+}
 
-  var thumbnail = json.members[0].character.thumbnail
-  var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
-
-  var frame = "images/frame.png"
-
-  var div = document.createElement('div');
-  div.setAttribute("id", "div0");
-  div.innerHTML = '<img id="img1" src=' + thumbnail + ' width="78" height="78"><img><img id="img2" src=' + frame + ' width="160" height="160"><img>';
-  document.body.appendChild(div);
-  
-  var d1 = document.getElementById('img1');
-	d1.style.position = "absolute";
-	d1.style.left = '24px';
-	d1.style.top = '19px';
-
-  var d2 = document.getElementById('img2');
-	d2.style.position = "absolute";
-	d2.style.left = '0px';
-	d2.style.top = '-13px';
-  console.log(thumbnail)
-
+function repositionElement(elementId, styleLeft, styleTop) {
+	var d = document.getElementById(elementId);
+	d.style.position = "absolute";
+	d.style.left = styleLeft;
+	d.style.top = styleTop;
 }
 
 function returnCharacterImgID(thumbnail) {
-	var characterImgId = thumbnail
-	var characterImgId = characterImgId.split("-")
-	var characterImgId = characterImgId[0];
-	return characterImgId
+	var characterImgId = thumbnail.substr(0, thumbnail.length - 11);
+	return characterImgId;
 }
 </script>
-	<h1>Hello World</h1>
-	<p>Im hosted with GitHub Pages.</p>
+
 </body>
 </html>
