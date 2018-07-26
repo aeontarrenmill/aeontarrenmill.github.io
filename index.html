@@ -7,6 +7,15 @@
     		background-repeat:no-repeat;
     		background-size:100% 100vh;
 		}
+		
+		@font-face {
+			font-family: myFirstFont;
+			src: url(fonts/font.tff);
+		}
+
+		* {
+			font-family: myFirstFont;
+		}
 	</style>	
 </head>
 <body>
@@ -51,7 +60,7 @@ function workit(json) {
 		var thumbnail = json.members[i].character.thumbnail;
 		var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg";
 		if (i == 0) {
-			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img>'
+			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2>The @font-face Rule</h1>'
 		} else {
 			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img>'
 		}		
