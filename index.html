@@ -24,7 +24,7 @@
 	</style>	
 </head>
 <body>
-  <script type="text/javascript">
+<script type="text/javascript">
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -41,7 +41,7 @@ function workit(json) {
 	var frame = "images/frame.png"
 	var maxWidth = window.innerWidth;
 	var maxHeight = window.innerHeight;
-	var maxPortraitsPerLine = (Math.floor(maxWidth / 190)) - 3;
+	var maxPortraitsPerLine = Math.floor(maxWidth / 240)
 
 	var membersLength = json.members.length;
 	var lines = Math.ceil(membersLength /maxPortraitsPerLine)
