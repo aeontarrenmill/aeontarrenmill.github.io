@@ -2,19 +2,18 @@
 <html>
 <head>
 	<link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Josefin+Sans">
+          href="https://fonts.googleapis.com/css?family=Audiowide">
 	<style type="text/css">
 		body  {
     		background-image: url("images/background_horde.jpg");
     		background-repeat:no-repeat;
     		background-size:100% 100vh;
-			font-family: 'Do Hyeon', serif;
-			font-size: 14px;
+			font-family: 'Audiowide', serif;
+			font-size: 13px;
 			color: #D7D9D9;
 		}
 		
-	@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
-	font-family: 'Josefin Sans', sans-serif;
+	
 	</style>	
 </head>
 <body>
@@ -35,7 +34,7 @@ function workit(json) {
 	var frame = "images/frame.png"
 	var maxWidth = window.innerWidth;
 	var maxHeight = window.innerHeight;
-	var maxPortraitsPerLine = maxWidth / 190;
+	var maxPortraitsPerLine = (Math.floor(maxWidth / 190)) - 3;
 	var membersLength = json.members.length;
 	
 	var baseLeftImg = 54;
@@ -51,18 +50,24 @@ function workit(json) {
 	
 	var line = 1;
 	var resultingInnerHtml;
+
+	
 	
 	console.log(json)
+
+	for (var i = 0;i < maxPortraitsPerLine; i++) {
 		
-	for (var i = 0;i < 7; i++) {
-		
-		var thumbnail = json.members[i].character.thumbnail;
-		var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg";
+		var thumbnail = json.members[i].character.thumbnail
+		var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
 		var charName  = json.members[i].character.name
+		var lvl = json.members[i].character.level
+		var wowclassNumber = json.members[i].character.class
+		var wowclass = returnWowClass(wowclassNumber);
+
 		if (i == 0) {
-			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2>'
+			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 id="class'+ 0 +'">'+ wowclass +'</h3><h3 id="lvl'+ 0 +'">'+ lvl +'</h3>'
 		} else {
-			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2>'
+			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2><h3 id="class'+ i +'">'+ wowclass +'</h3><h3 id="lvl'+ i +'">'+ lvl +'</h3>'
 		}
 	}
 	var div = document.createElement('div');
@@ -70,10 +75,12 @@ function workit(json) {
 	div.innerHTML = resultingInnerHtml;
 	document.body.appendChild(div);
 	
-	for (var i = 0; i < 7; i++) {
+	for (var i = 0; i < maxPortraitsPerLine; i++) {
 		var currentIdImg = "img" + i;
 		var currentIdFrame = "frame" + i;
 		var currentIdText = "txt" + i;
+		var currentIdClass = "class" + i;
+		var currentIdLvl = "lvl" + i;
 		var leftOffsetImg = baseLeftImg;
 		var leftOffsetFrame = baseLeftFrame;
 		
@@ -87,7 +94,45 @@ function workit(json) {
 		repositionElement(currentIdImg, leftOffsetImg + "px", 25 + "px");
 		repositionElement(currentIdFrame, leftOffsetFrame + "px", -10 + "px");
 		repositionElement(currentIdText, (leftOffsetImg + 120) + "px", 5 + "px");
+		repositionElement(currentIdClass, (leftOffsetImg) + "px", 120 + "px");
+		repositionElement(currentIdLvl, (leftOffsetImg + 54) + "px", 67 + "px");
 	}
+}
+function returnWowClass(wowclass) {
+	var wowClass = {
+	    hunter : "Hunter",
+	    warrior : "Warrior",
+		paladin : "Paladin",
+		rogue : "Rogue",
+		priest : "Priest",
+		deathknight : "Death Knight",
+		shaman : "Shaman",
+		mage : "Mage",
+		warlock : "Warlock",
+		monk : "Monk",
+		druid : "Druid",
+		demonhunter : "Demon Hunter"
+	};
+	var wc;
+	if (wowclass == '3') {
+		wc = wowClass.hunter
+	} else if (wowclass == '2') {
+		wc = wowClass.paladin
+	} else if (wowclass == '6') {
+		wc = wowClass.deathknight
+	} else if (wowclass == '7') {
+		wc = wowClass.shaman
+	} else if (wowclass == '4' || wowclass == '12') {
+		wc = wowClass.rogue
+	} else if (wowclass == '1') {
+		wc = wowClass.warrior
+	} else if (wowclass == '11') {
+		wc = wowclass.druid
+	} else if (wowclass == '10') {
+		wc = wowclass.monk
+	}
+
+	return wc;
 }
 
 function repositionElement(elementId, styleLeft, styleTop) {
