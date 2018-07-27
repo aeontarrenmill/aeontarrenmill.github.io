@@ -60,6 +60,12 @@ function workit(json) {
 	var line = 1;
 	var resultingInnerHtml;
 
+	var titleAeon = document.createElement('div');
+	titleAeon.setAttribute("id", "titleAeon");
+	titleAeon.innerHTML = "<h1 style=\"font-size:500%;left:45%;top:3%;position:absolute\">AeoN";
+	document.body.appendChild(titleAeon);
+	
+		
 	
 	
 	console.log(json)
@@ -74,9 +80,9 @@ function workit(json) {
 		var wowclass = returnWowClass(wowclassNumber);
 
 		if (i == 0) {
-			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ 0 +'">'+ wowclass +'</h3><h3 id="lvl'+ 0 +'">'+ lvl +'</h3>'
+			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ 0 +'">'+ wowclass +'</h3><h4 id="lvl'+ 0 +'">'+ lvl +'</h4>'
 		} else {
-			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ i +'">'+ wowclass +'</h3><h3 id="lvl'+ i +'">'+ lvl +'</h3>'
+			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ i +'">'+ wowclass +'</h3><h4 id="lvl'+ i +'">'+ lvl +'</h4>'
 		}
 	}
 
@@ -114,7 +120,7 @@ function workit(json) {
 			repositionElement(currentIdFrame, leftOffsetFrame + "px", numYframe + "px");
 			repositionElement(currentIdText, (leftOffsetImg) + "px", numYtext + "px");
 			repositionElement(currentIdClass, (leftOffsetImg) + "px", numYclass + "px");
-			repositionElement(currentIdLvl, (leftOffsetImg + 54) + "px", numYlvl + "px");
+			repositionElement(currentIdLvl, (leftOffsetImg + 56) + "px", numYlvl + "px");
 			currentItemTracker++
 		}
 		numYimg = numYimg + numOffsetY
