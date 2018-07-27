@@ -65,9 +65,9 @@ function workit(json) {
 		var wowclass = returnWowClass(wowclassNumber);
 
 		if (i == 0) {
-			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 id="class'+ 0 +'">'+ wowclass +'</h3><h3 id="lvl'+ 0 +'">'+ lvl +'</h3>'
+			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ 0 +'">'+ wowclass +'</h3><h3 id="lvl'+ 0 +'">'+ lvl +'</h3>'
 		} else {
-			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2><h3 id="class'+ i +'">'+ wowclass +'</h3><h3 id="lvl'+ i +'">'+ lvl +'</h3>'
+			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ i +'">'+ wowclass +'</h3><h3 id="lvl'+ i +'">'+ lvl +'</h3>'
 		}
 	}
 	var div = document.createElement('div');
@@ -93,8 +93,8 @@ function workit(json) {
 		
 		repositionElement(currentIdImg, leftOffsetImg + "px", 25 + "px");
 		repositionElement(currentIdFrame, leftOffsetFrame + "px", -10 + "px");
-		repositionElement(currentIdText, (leftOffsetImg + 120) + "px", 5 + "px");
-		repositionElement(currentIdClass, (leftOffsetImg) + "px", 120 + "px");
+		repositionElement(currentIdText, (leftOffsetImg) + "px", 120 + "px");
+		repositionElement(currentIdClass, (leftOffsetImg) + "px", 140 + "px");
 		repositionElement(currentIdLvl, (leftOffsetImg + 54) + "px", 67 + "px");
 	}
 }
