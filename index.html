@@ -11,8 +11,15 @@
 			font-family: 'Audiowide', serif;
 			font-size: 13px;
 			color: #D7D9D9;
+			overflow: hidden;
 		}
-		
+
+		div {
+		    width: 100%;
+    		height: 80%;
+		    overflow: auto;
+		}
+
 	
 	</style>	
 </head>
@@ -35,8 +42,10 @@ function workit(json) {
 	var maxWidth = window.innerWidth;
 	var maxHeight = window.innerHeight;
 	var maxPortraitsPerLine = (Math.floor(maxWidth / 190)) - 3;
+
 	var membersLength = json.members.length;
-	
+	var lines = Math.ceil(membersLength /maxPortraitsPerLine)
+
 	var baseLeftImg = 54;
 	var baseTopImg = 29;
 	var baseLeftFrame = 30;
@@ -55,7 +64,7 @@ function workit(json) {
 	
 	console.log(json)
 
-	for (var i = 0;i < maxPortraitsPerLine; i++) {
+	for (var i = 0;i < membersLength; i++) {
 		
 		var thumbnail = json.members[i].character.thumbnail
 		var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
@@ -65,38 +74,59 @@ function workit(json) {
 		var wowclass = returnWowClass(wowclassNumber);
 
 		if (i == 0) {
-			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ 0 +'">'+ wowclass +'</h3><h3 id="lvl'+ 0 +'">'+ lvl +'</h3>'
+			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ 0 +'">'+ wowclass +'</h3><h3 id="lvl'+ 0 +'">'+ lvl +'</h3>'
 		} else {
-			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'" style="position:absolute;left:'+ baseLeftImg +';top:'+ baseTopImg +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'" style="position:absolute;left:'+ baseLeftFrame +';top:'+ baseTopFrame +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ i +'">'+ wowclass +'</h3><h3 id="lvl'+ i +'">'+ lvl +'</h3>'
+			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ i +'">'+ wowclass +'</h3><h3 id="lvl'+ i +'">'+ lvl +'</h3>'
 		}
 	}
+
 	var div = document.createElement('div');
-	div.setAttribute("id", "div0");
+	div.setAttribute("id", "roster");
 	div.innerHTML = resultingInnerHtml;
 	document.body.appendChild(div);
-	
-	for (var i = 0; i < maxPortraitsPerLine; i++) {
-		var currentIdImg = "img" + i;
-		var currentIdFrame = "frame" + i;
-		var currentIdText = "txt" + i;
-		var currentIdClass = "class" + i;
-		var currentIdLvl = "lvl" + i;
-		var leftOffsetImg = baseLeftImg;
-		var leftOffsetFrame = baseLeftFrame;
-		
-		/*
-		var topOffsetImg = document.getElementById(currentIdImg).offsetTop;
-		var topOffsetFrame = document.getElementById(currentIdFrame).offsetLeft;
-		*/
-		baseLeftImg = leftOffsetImg + frameWidthAndHeight + offsetX;
-		baseLeftFrame = leftOffsetFrame + frameWidthAndHeight + offsetX;
-		
-		repositionElement(currentIdImg, leftOffsetImg + "px", 25 + "px");
-		repositionElement(currentIdFrame, leftOffsetFrame + "px", -10 + "px");
-		repositionElement(currentIdText, (leftOffsetImg) + "px", 120 + "px");
-		repositionElement(currentIdClass, (leftOffsetImg) + "px", 140 + "px");
-		repositionElement(currentIdLvl, (leftOffsetImg + 54) + "px", 67 + "px");
+
+	repositionElement("roster", "30px", "150px");
+
+	var numYimg = 25
+	var numYframe = -10
+	var numYtext = 120
+	var numYclass = 140
+	var numYlvl = 67
+	var numOffsetY = 180
+	var currentItemTracker = 0
+
+	console.log(lines)
+	for (var k = 1; k <= lines; k++) {
+		for (var i = 0; i < maxPortraitsPerLine; i++) {
+			var currentIdImg = "img" + currentItemTracker;
+			var currentIdFrame = "frame" + currentItemTracker;
+			var currentIdText = "txt" + currentItemTracker;
+			var currentIdClass = "class" + currentItemTracker;
+			var currentIdLvl = "lvl" + currentItemTracker;
+			var leftOffsetImg = baseLeftImg;
+			var leftOffsetFrame = baseLeftFrame;
+			
+			
+			baseLeftImg = leftOffsetImg + frameWidthAndHeight + offsetX;
+			baseLeftFrame = leftOffsetFrame + frameWidthAndHeight + offsetX;
+			
+			repositionElement(currentIdImg, leftOffsetImg + "px", numYimg + "px");
+			repositionElement(currentIdFrame, leftOffsetFrame + "px", numYframe + "px");
+			repositionElement(currentIdText, (leftOffsetImg) + "px", numYtext + "px");
+			repositionElement(currentIdClass, (leftOffsetImg) + "px", numYclass + "px");
+			repositionElement(currentIdLvl, (leftOffsetImg + 54) + "px", numYlvl + "px");
+			currentItemTracker++
+		}
+		numYimg = numYimg + numOffsetY
+		numYframe = numYframe + numOffsetY
+		numYtext = numYtext + numOffsetY
+		numYclass = numYclass + numOffsetY
+		numYlvl = numYlvl + numOffsetY
+
+		baseLeftImg = 54
+		baseLeftFrame = 30
 	}
+	
 }
 function returnWowClass(wowclass) {
 	var wowClass = {
