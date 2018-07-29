@@ -101,6 +101,12 @@ function workit(jsonClasses, jsonGuild) {
 	
 	//createHtmlElement("rank0", "rank0", "rank0")
 	
+	
+	var div = document.createElement('div');
+	div.setAttribute("id", "roster");
+	document.body.appendChild(div);
+
+	
 	for (var i = 0;i < membersLength; i++) {
 		console.log(returnRank( json.members[i].rank))
 		var thumbnail = json.members[i].character.thumbnail
@@ -117,12 +123,8 @@ function workit(jsonClasses, jsonGuild) {
 		}
 	}
 	
-	
-	var div = document.createElement('div');
-	div.setAttribute("id", "roster");
 	div.innerHTML = resultingInnerHtml;
-	document.body.appendChild(div);
-
+	
 	repositionElement("roster", "30px", "150px");
 
 	var numYimg = 425
