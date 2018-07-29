@@ -25,19 +25,41 @@
 </head>
 <body>
 <script type="text/javascript">
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-       // Typical action to be performed when the document is ready:
-       var rawJson = this.responseText
-       var json = JSON.parse(rawJson)
-       workit(json)
-    }
-};
-xhttp.open("GET", "https://eu.api.battle.net/wow/guild/dentarg/AeoN?fields=members&locale=en_GB&apikey=vra69wc2sq5c6kfmqachabmyugxgsh56", true);
-xhttp.send();
 
-function workit(json) {
+startApiCallGuild()
+
+function startApiCallGuild() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		   // Typical action to be performed when the document is ready:
+		   var rawJson = this.responseText
+		   var jsonGuild = JSON.parse(rawJson)
+		   startApiCallClasses(jsonGuild)
+		}
+	};
+	xhttp.open("GET", "https://eu.api.battle.net/wow/guild/dentarg/AeoN?fields=members&locale=en_GB&apikey=vra69wc2sq5c6kfmqachabmyugxgsh56", true);
+	xhttp.send();
+}
+
+function startApiCallClasses(guildJson) {
+	var jsonGuild = guildJson
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		   // Typical action to be performed when the document is ready:
+		   var rawJson = this.responseText
+		   var jsonClasses = JSON.parse(rawJson)
+		   workit(jsonClasses, jsonGuild)
+		}
+	};
+	xhttp.open("GET", "https://eu.api.battle.net/wow/data/character/classes?locale=en_GB&apikey=vra69wc2sq5c6kfmqachabmyugxgsh56", true);
+	xhttp.send();
+}
+
+function workit(jsonClasses, jsonGuild) {
+	var jsonClasses = jsonClasses
+	var json = jsonGuild
 	var frame = "images/frame.png"
 	var maxWidth = window.innerWidth;
 	var maxHeight = window.innerHeight;
@@ -63,21 +85,23 @@ function workit(json) {
 	var titleAeon = document.createElement('div');
 	titleAeon.setAttribute("id", "titleAeon");
 	titleAeon.innerHTML = "<h1 style=\"font-size:500%;left:45%;position:absolute\">AeoN";
-	document.body.appendChild(titleAeon);
+	document.body.appendChild(titleAeon);	
 	
-		
-	
+	var titleDentarg = document.createElement('div');
+	titleDentarg.setAttribute("id", "titleDentarg");
+	titleDentarg.innerHTML = "<h4 style=\"font-size:100%;left:48%;top:5%;position:absolute\">Tarren Mill";
+	document.body.appendChild(titleDentarg);	
 	
 	console.log(json)
 
 	for (var i = 0;i < membersLength; i++) {
-		
+		console.log(returnRank( json.members[i].rank))
 		var thumbnail = json.members[i].character.thumbnail
 		var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
 		var charName  = json.members[i].character.name
 		var lvl = json.members[i].character.level
 		var wowclassNumber = json.members[i].character.class
-		var wowclass = returnWowClass(wowclassNumber);
+		var wowclass = returnWowClass(jsonClasses, wowclassNumber);
 
 		if (i == 0) {
 			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ 0 +'">'+ wowclass +'</h3><h4 id="lvl'+ 0 +'">'+ lvl +'</h4>'
@@ -101,7 +125,7 @@ function workit(json) {
 	var numOffsetY = 180
 	var currentItemTracker = 0
 
-	console.log(lines)
+
 	for (var k = 1; k <= lines; k++) {
 		for (var i = 0; i < maxPortraitsPerLine; i++) {
 			var currentIdImg = "img" + currentItemTracker;
@@ -134,41 +158,52 @@ function workit(json) {
 	}
 	
 }
-function returnWowClass(wowclass) {
-	var wowClass = {
-	    hunter : "Hunter",
-	    warrior : "Warrior",
-		paladin : "Paladin",
-		rogue : "Rogue",
-		priest : "Priest",
-		deathknight : "Death Knight",
-		shaman : "Shaman",
-		mage : "Mage",
-		warlock : "Warlock",
-		monk : "Monk",
-		druid : "Druid",
-		demonhunter : "Demon Hunter"
-	};
+function returnWowClass(jsonClasses, wowclass) {
+	
 	var wc;
-	if (wowclass == '3') {
-		wc = wowClass.hunter
-	} else if (wowclass == '2') {
-		wc = wowClass.paladin
-	} else if (wowclass == '6') {
-		wc = wowClass.deathknight
-	} else if (wowclass == '7') {
-		wc = wowClass.shaman
-	} else if (wowclass == '4' || wowclass == '12') {
-		wc = wowClass.rogue
-	} else if (wowclass == '1') {
-		wc = wowClass.warrior
-	} else if (wowclass == '11') {
-		wc = wowclass.druid
-	} else if (wowclass == '10') {
-		wc = wowclass.monk
+	for (var i = 0; i < jsonClasses.classes.length; i++) {
+		
+		if (jsonClasses.classes[i].id == wowclass) {
+			
+			wc = jsonClasses.classes[i].name
+			i = jsonClasses.classes.length
+		}
 	}
-
 	return wc;
+}
+
+function returnRank(rank) {
+	var ranks = {
+		gm : "Dear Leader, Kim Il'sung's long lost bro",
+		eternal: "Eternal",
+		oldblood: "Old Blood",
+		darkblood: "Dark Blood",
+		highblood: "High Blood",
+		blood: "Blood",
+		alt: "Alt",
+		trial: "Trial",
+	}
+	var guildRank
+	
+	if (rank == 0) {
+		guildRank = ranks.gm
+	} else if (rank == 1) {
+		guildRank = ranks.eternal
+	} else if (rank == 2) {
+		guildRank = ranks.oldblood
+	} else if (rank == 3) {
+		guildRank = ranks.darkblood
+	} else if (rank == 4) {
+		guildRank = ranks.highblood
+	} else if (rank == 5) {
+		guildRank = ranks.blood
+	} else if (rank == 6) {
+		guildRank = ranks.alt
+	} else if (rank == 7) {
+		guildRank = ranks.trial
+	}
+	
+	return guildRank;
 }
 
 function repositionElement(elementId, styleLeft, styleTop) {
