@@ -22,8 +22,11 @@
 
 	
 	</style>	
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 <body>
+
+
 <script type="text/javascript">
 
 startApiCallGuild()
@@ -86,14 +89,18 @@ function workit(jsonClasses, jsonGuild) {
 	titleAeon.setAttribute("id", "titleAeon");
 	titleAeon.innerHTML = "<h1 style=\"font-size:500%;left:45%;position:absolute\">AeoN";
 	document.body.appendChild(titleAeon);	
-	
+	/*
 	var titleDentarg = document.createElement('div');
 	titleDentarg.setAttribute("id", "titleDentarg");
 	titleDentarg.innerHTML = "<h4 style=\"font-size:100%;left:48%;top:5%;position:absolute\">Tarren Mill";
 	document.body.appendChild(titleDentarg);	
-	
+	*/
 	console.log(json)
-
+	
+	var ideals = "<div id=\"ideals\" style=\"left:5%;\"><h2><ul><li>We are a guild made up of 25-45 year olds with wives/gf’s/kids/work.<br>Some of us have been playing for 11 years.<br>Therefore we do not commit to anything.</li><li>We do however try to get together for mythic dungeons or whatever but there are no guarantees.</li><li>It is important for us that you understand this, so there are no surprises later.</li><li>It is also important to understand that for us time is limited.<br>Therefore, when joining up with guildies having fun is important but it is also important to not waste each other’s time.</li><li>This means that on fights you have to try your best.<br>Making mistakes is human and acceptable as long as you don’t stand in the fire intentionally because you are a dps whore.</li><li>This guild will never be a progression guild.<br>Any attempt to push the guild into such direction that would change our casual view will not be accepted.</li></ul><p>You can contact Spiritbull on Tarren Mill/Dentarg or real ID:&nbsp;Chronos #2824</p><p>Cheers</p></h2></div>"
+	
+	//createHtmlElement("rank0", "rank0", "rank0")
+	
 	for (var i = 0;i < membersLength; i++) {
 		console.log(returnRank( json.members[i].rank))
 		var thumbnail = json.members[i].character.thumbnail
@@ -104,12 +111,13 @@ function workit(jsonClasses, jsonGuild) {
 		var wowclass = returnWowClass(jsonClasses, wowclassNumber);
 
 		if (i == 0) {
-			resultingInnerHtml = '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ 0 +'">'+ wowclass +'</h3><h4 id="lvl'+ 0 +'">'+ lvl +'</h4>'
+			resultingInnerHtml = ideals + '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ 0 +'">'+ wowclass +'</h3><h4 id="lvl'+ 0 +'">'+ lvl +'</h4>'
 		} else {
 			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ i +'">'+ wowclass +'</h3><h4 id="lvl'+ i +'">'+ lvl +'</h4>'
 		}
 	}
-
+	
+	
 	var div = document.createElement('div');
 	div.setAttribute("id", "roster");
 	div.innerHTML = resultingInnerHtml;
@@ -117,12 +125,12 @@ function workit(jsonClasses, jsonGuild) {
 
 	repositionElement("roster", "30px", "150px");
 
-	var numYimg = 25
-	var numYframe = -10
-	var numYtext = 120
-	var numYclass = 140
-	var numYlvl = 67
-	var numOffsetY = 180
+	var numYimg = 425
+	var numYframe = 390
+	var numYtext = 520
+	var numYclass = 540
+	var numYlvl = 467
+	var numOffsetY = 180 //don't change this
 	var currentItemTracker = 0
 
 
@@ -217,6 +225,15 @@ function returnCharacterImgID(thumbnail) {
 	var characterImgId = thumbnail.substr(0, thumbnail.length - 11);
 	return characterImgId;
 }
+
+function createHtmlElement(ele, id, innerHtmlCode) {
+	var element = document.createElement(ele);
+	element.setAttribute("id", id);
+	element.innerHTML = innerHtmlCode;
+	document.body.appendChild(element);
+}
+	
+	
 </script>
 
 </body>
