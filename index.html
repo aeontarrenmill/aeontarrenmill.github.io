@@ -101,29 +101,263 @@ function workit(jsonClasses, jsonGuild) {
 	
 	//createHtmlElement("rank0", "rank0", "rank0")
 	
+	var arrayRank0 = []
+	var arrayRank1 = []
+	var arrayRank2 = []
+	var arrayRank3 = []
+	var arrayRank4 = []
+	var arrayRank5 = []
+	var arrayRank6 = []
+	var arrayRank7 = []
+	
+	for (var i = 0; i < membersLength; i++) {
+		if (json.members[i].rank == 0) {
+			arrayRank0.push(json.members[i].character.name)
+		} else if (json.members[i].rank == 1) {
+			arrayRank1.push(json.members[i].character.name)
+		} else if (json.members[i].rank == 2) {
+			arrayRank2.push(json.members[i].character.name)
+		} else if (json.members[i].rank == 3) {
+			arrayRank3.push(json.members[i].character.name)
+		} else if (json.members[i].rank == 4) {
+			arrayRank4.push(json.members[i].character.name)
+		} else if (json.members[i].rank == 5) {
+			arrayRank5.push(json.members[i].character.name)
+		} else if (json.members[i].rank == 6) {
+			arrayRank6.push(json.members[i].character.name)
+		} else if (json.members[i].rank == 7) {
+			arrayRank7.push(json.members[i].character.name)
+		}
+	}
+	
+	
 	
 	var div = document.createElement('div');
 	div.setAttribute("id", "roster");
 	document.body.appendChild(div);
-
 	
+	var k = 0
+	var resultingInnerHtmlRank0;
+	for (var j = 0;j < arrayRank0.length; j++) {
+		for (var i = 0; i < membersLength; i++) {
+			if (arrayRank0[j] == json.members[i].character.name) {
+				var thumbnail = json.members[i].character.thumbnail
+				var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
+				var charName  = json.members[i].character.name
+				var lvl = json.members[i].character.level
+				var wowclassNumber = json.members[i].character.class
+				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
+			
+				if (j == 0) {
+					resultingInnerHtmlRank0 = ideals + '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				} else {
+					resultingInnerHtmlRank0 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ j +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				}
+			}
+			
+		}		
+		k++
+	}
+	
+	var resultingInnerHtmlRank1;
+	for (var j = 0;j < arrayRank1.length; j++) {
+		for (var i = 0; i < membersLength; i++) {
+			if (arrayRank1[j] == json.members[i].character.name) {
+				var thumbnail = json.members[i].character.thumbnail
+				var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
+				var charName  = json.members[i].character.name
+				var lvl = json.members[i].character.level
+				var wowclassNumber = json.members[i].character.class
+				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
+			
+				if (j == 0) {
+					resultingInnerHtmlRank1 = '<div><img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				} else {
+					resultingInnerHtmlRank1 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				}
+			}
+			
+		}	
+	k++		
+	}
+	
+	var resultingInnerHtmlRank2;
+	for (var j = 0;j < arrayRank2.length; j++) {
+		for (var i = 0; i < membersLength; i++) {
+			if (arrayRank2[j] == json.members[i].character.name) {
+				var thumbnail = json.members[i].character.thumbnail
+				var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
+				var charName  = json.members[i].character.name
+				var lvl = json.members[i].character.level
+				var wowclassNumber = json.members[i].character.class
+				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
+			
+				if (j == 0) {
+					resultingInnerHtmlRank2 = '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				} else {
+					resultingInnerHtmlRank2 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				}
+			}
+		}
+	k++		
+	}
+	
+	var resultingInnerHtmlRank3;
+	for (var j = 0;j < arrayRank3.length; j++) {
+		for (var i = 0; i < membersLength; i++) {
+			if (arrayRank3[j] == json.members[i].character.name) {
+				var thumbnail = json.members[i].character.thumbnail
+				var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
+				var charName  = json.members[i].character.name
+				var lvl = json.members[i].character.level
+				var wowclassNumber = json.members[i].character.class
+				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
+			
+				if (j == 0) {
+					resultingInnerHtmlRank3 = '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				} else {
+					resultingInnerHtmlRank3 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				}
+			}
+		}	
+	k++
+	}
+	
+	var resultingInnerHtmlRank4;
+	for (var j = 0;j < arrayRank4.length; j++) {
+		for (var i = 0; i < membersLength; i++) {
+			if (arrayRank4[j] == json.members[i].character.name) {
+				var thumbnail = json.members[i].character.thumbnail
+				var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
+				var charName  = json.members[i].character.name
+				var lvl = json.members[i].character.level
+				var wowclassNumber = json.members[i].character.class
+				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
+			
+				if (j == 0) {
+					resultingInnerHtmlRank4 = '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				} else {
+					resultingInnerHtmlRank4 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				}
+			}
+		}		
+	k++
+	}
+	
+	var resultingInnerHtmlRank5;
+	for (var j = 0;j < arrayRank5.length; j++) {
+		for (var i = 0; i < membersLength; i++) {
+			if (arrayRank5[j] == json.members[i].character.name) {
+				var thumbnail = json.members[i].character.thumbnail
+				var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
+				var charName  = json.members[i].character.name
+				var lvl = json.members[i].character.level
+				var wowclassNumber = json.members[i].character.class
+				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
+			
+				if (j == 0) {
+					resultingInnerHtmlRank5 = '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				} else {
+					resultingInnerHtmlRank5 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				}
+			}
+		}
+	k++		
+	}
+	
+	var resultingInnerHtmlRank6;
+	for (var j = 0;j < arrayRank6.length; j++) {
+		for (var i = 0; i < membersLength; i++) {
+			if (arrayRank6[j] == json.members[i].character.name) {
+				var thumbnail = json.members[i].character.thumbnail
+				var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
+				var charName  = json.members[i].character.name
+				var lvl = json.members[i].character.level
+				var wowclassNumber = json.members[i].character.class
+				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
+			
+				if (j == 0) {
+					resultingInnerHtmlRank6 = '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				} else {
+					resultingInnerHtmlRank6 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				}
+			}
+		}
+	k++		
+	}
+	
+	var resultingInnerHtmlRank7;
+	for (var j = 0;j < arrayRank7.length; j++) {
+		for (var i = 0; i < membersLength; i++) {
+			if (arrayRank7[j] == json.members[i].character.name) {
+				var thumbnail = json.members[i].character.thumbnail
+				var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
+				var charName  = json.members[i].character.name
+				var lvl = json.members[i].character.level
+				var wowclassNumber = json.members[i].character.class
+				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
+			
+				if (j == 0) {
+					resultingInnerHtmlRank7 = '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				} else {
+					resultingInnerHtmlRank7 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+				}
+			}
+		}
+	k++		
+	}
+	
+	
+/*	
 	for (var i = 0;i < membersLength; i++) {
-		console.log(returnRank( json.members[i].rank))
+		
 		var thumbnail = json.members[i].character.thumbnail
 		var thumbnail = "http://render-eu.worldofwarcraft.com/character/" + returnCharacterImgID(thumbnail) + "-avatar.jpg"
 		var charName  = json.members[i].character.name
 		var lvl = json.members[i].character.level
 		var wowclassNumber = json.members[i].character.class
 		var wowclass = returnWowClass(jsonClasses, wowclassNumber);
-
+		
 		if (i == 0) {
 			resultingInnerHtml = ideals + '<img id="img' + 0 + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + 0 + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ 0 +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ 0 +'">'+ wowclass +'</h3><h4 id="lvl'+ 0 +'">'+ lvl +'</h4>'
 		} else {
 			resultingInnerHtml += '<img id="img' + i + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + i + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ i +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ i +'">'+ wowclass +'</h3><h4 id="lvl'+ i +'">'+ lvl +'</h4>'
 		}
 	}
+*/	
+	var finalInnerHtml = resultingInnerHtmlRank0 + '<br>' + resultingInnerHtmlRank1 + resultingInnerHtmlRank2 + resultingInnerHtmlRank3 + resultingInnerHtmlRank4 + resultingInnerHtmlRank5 + resultingInnerHtmlRank6 + resultingInnerHtmlRank7
 	
-	div.innerHTML = resultingInnerHtml;
+	
+
+	//finalInnerHtml += resultingInnerHtmlRank1
+
+	function returnFinalInnerHtml() {
+		var innerHtml = resultingInnerHtmlRank0
+		
+		if(resultingInnerHtmlRank1 != undefined) {
+			innerHtml += resultingInnerHtmlRank1
+		}
+		if(resultingInnerHtmlRank2 != undefined) {
+			innerHtml += resultingInnerHtmlRank2
+		}
+		if(resultingInnerHtmlRank3 != undefined) {
+			innerHtml += resultingInnerHtmlRank3
+		}
+		if(resultingInnerHtmlRank4 != undefined) {
+			innerHtml += resultingInnerHtmlRank4
+		}
+		if(resultingInnerHtmlRank5 != undefined) {
+			innerHtml += resultingInnerHtmlRank5
+		}
+		if(resultingInnerHtmlRank6 != undefined) {
+			innerHtml += resultingInnerHtmlRank6
+		}
+		if(resultingInnerHtmlRank7 != undefined) {
+			innerHtml += resultingInnerHtmlRank7
+		}
+		return innerHtml
+	}
+	div.innerHTML = returnFinalInnerHtml();
 	
 	repositionElement("roster", "30px", "150px");
 
@@ -234,8 +468,7 @@ function createHtmlElement(ele, id, innerHtmlCode) {
 	element.innerHTML = innerHtmlCode;
 	document.body.appendChild(element);
 }
-	
-	
+
 </script>
 
 </body>
