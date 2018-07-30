@@ -14,7 +14,10 @@
 			overflow: hidden;
 		}
 
-		div {
+		#divContainer {
+			font-family: 'Audiowide', serif;
+			font-size: 13px;
+			color: #D7D9D9;
 		    width: 100%;
     		height: 80%;
 		    overflow: auto;
@@ -22,7 +25,9 @@
 
 	
 	</style>	
+	
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="js/tippy.all.min.js"></script>
 </head>
 <body>
 
@@ -88,7 +93,8 @@ function workit(jsonClasses, jsonGuild) {
 	var titleAeon = document.createElement('div');
 	titleAeon.setAttribute("id", "titleAeon");
 	titleAeon.innerHTML = "<h1 style=\"font-size:500%;left:45%;position:absolute\">AeoN";
-	document.body.appendChild(titleAeon);	
+	document.body.appendChild(titleAeon);
+
 	/*
 	var titleDentarg = document.createElement('div');
 	titleDentarg.setAttribute("id", "titleDentarg");
@@ -129,13 +135,13 @@ function workit(jsonClasses, jsonGuild) {
 			arrayRank7.push(json.members[i].character.name)
 		}
 	}
-	
-	
-	
-	var div = document.createElement('div');
-	div.setAttribute("id", "roster");
-	document.body.appendChild(div);
-	
+
+	var divContainer = document.createElement('div');
+	divContainer.setAttribute("id", "divContainer");
+	divContainer.innerHTML = ideals;
+	document.body.appendChild(divContainer)
+	repositionElement("divContainer", "30px", "150px");
+			
 	var k = 0
 	var resultingInnerHtmlRank0;
 	for (var j = 0;j < arrayRank0.length; j++) {
@@ -149,7 +155,7 @@ function workit(jsonClasses, jsonGuild) {
 				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
 			
 				if (j == 0) {
-					resultingInnerHtmlRank0 = ideals + '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+					resultingInnerHtmlRank0 = '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
 				} else {
 					resultingInnerHtmlRank0 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ j +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
 				}
@@ -171,7 +177,7 @@ function workit(jsonClasses, jsonGuild) {
 				var wowclass = returnWowClass(jsonClasses, wowclassNumber);
 			
 				if (j == 0) {
-					resultingInnerHtmlRank1 = '<div><img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
+					resultingInnerHtmlRank1 = '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
 				} else {
 					resultingInnerHtmlRank1 += '<img id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;" id="class'+ k +'">'+ wowclass +'</h3><h4 id="lvl'+ k +'">'+ lvl +'</h4>'
 				}
@@ -325,7 +331,7 @@ function workit(jsonClasses, jsonGuild) {
 		}
 	}
 */	
-	var finalInnerHtml = resultingInnerHtmlRank0 + '<br>' + resultingInnerHtmlRank1 + resultingInnerHtmlRank2 + resultingInnerHtmlRank3 + resultingInnerHtmlRank4 + resultingInnerHtmlRank5 + resultingInnerHtmlRank6 + resultingInnerHtmlRank7
+	var finalInnerHtml = returnFinalInnerHtml()
 	
 	
 
@@ -357,9 +363,12 @@ function workit(jsonClasses, jsonGuild) {
 		}
 		return innerHtml
 	}
-	div.innerHTML = returnFinalInnerHtml();
+
+	$( "<div id=\"roster\">" + finalInnerHtml + "</div>" ).insertAfter( "#ideals" );
+
+	//div.innerHTML = returnFinalInnerHtml();
 	
-	repositionElement("roster", "30px", "150px");
+	//repositionElement("roster", "30px", "150px");
 
 	var numYimg = 425
 	var numYframe = 390
