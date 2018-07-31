@@ -21,7 +21,8 @@
 			color: #D7D9D9;
 		    width: 100%;
     		height: 80%;
-		    overflow: auto;
+		    overflow-y: auto;
+			overflow-x: hidden;
 		}
 
 	
@@ -171,7 +172,7 @@ function workit(jsonClasses, jsonGuild) {
 					resultingInnerHtmlRank0 += '<img style="position:relative;top:' + topImg + 'px;left:' + leftImg + 'px" id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img style="position:relative" id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;position:relative;top:' + topClass + 'px;left:' + leftClass + 'px" id="class'+ k +'">'+ wowclass +'</h3><h4 style="position:relative;top:' + topLvl + 'px;left:' + leftLvl + 'px" id="lvl'+ k +'">'+ lvl +'</h4>'
 				}
 				if (j == arrayRank0.length - 1) {
-					resultingInnerHtmlRank0 += '</div><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr></h2>'
+					resultingInnerHtmlRank0 += '<h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr width="30%" align="left"></h2></div>'
 				}
 			}
 			
@@ -197,7 +198,7 @@ function workit(jsonClasses, jsonGuild) {
 					resultingInnerHtmlRank1 += '<div style="display: inline-block;"><img style="position:relative;top:' + topImg + 'px;left:' + leftImg + 'px" id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img style="position:relative" id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;position:relative;top:' + topClass + 'px;left:' + leftClass + 'px" id="class'+ k +'">'+ wowclass +'</h3><h4 style="position:relative;top:' + topLvl + 'px;left:' + leftLvl + 'px" id="lvl'+ k +'">'+ lvl +'</h4></div>'
 				}
 				if (j == arrayRank1.length - 1) {
-					resultingInnerHtmlRank1 += '</div><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr></h2>'
+					resultingInnerHtmlRank1 += '<h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr width="30%" align="left"></h2></div>'
 				}
 			}
 			
@@ -222,7 +223,7 @@ function workit(jsonClasses, jsonGuild) {
 					resultingInnerHtmlRank2 += '<div style="display: inline-block;"><img style="display: inline-block;position:relative;top:' + topImg + 'px;left:' + leftImg + 'px" id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img style="position:relative" id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;position:relative;top:' + topClass + 'px;left:' + leftClass + 'px" id="class'+ k +'">'+ wowclass +'</h3><h4 style="position:relative;top:' + topLvl + 'px;left:' + leftLvl + 'px" id="lvl'+ k +'">'+ lvl +'</h4></div>'
 				}
 				if (j == arrayRank2.length - 1) {
-					resultingInnerHtmlRank2 += '</div><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr></h2>'
+					resultingInnerHtmlRank2 += '<h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr width="30%" align="left"></h2></div>'
 				}
 			}
 		}
@@ -246,7 +247,7 @@ function workit(jsonClasses, jsonGuild) {
 					resultingInnerHtmlRank3 += '<div style="display: inline-block;"><img style="position:relative;top:' + topImg + 'px;left:' + leftImg + 'px" id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img style="position:relative" id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;position:relative;top:' + topClass + 'px;left:' + leftClass + 'px" id="class'+ k +'">'+ wowclass +'</h3><h4 style="position:relative;top:' + topLvl + 'px;left:' + leftLvl + 'px" id="lvl'+ k +'">'+ lvl +'</h4></div>'
 				}
 				if (j == arrayRank3.length - 1) {
-					resultingInnerHtmlRank3 += '</div><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr></h2>'
+					resultingInnerHtmlRank3 += '<h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr width="30%" align="left"></h2></div>'
 				}
 			}
 		}	
@@ -270,7 +271,7 @@ function workit(jsonClasses, jsonGuild) {
 					resultingInnerHtmlRank4 += '<div style="display: inline-block;"><img style="position:relative;top:' + topImg + 'px;left:' + leftImg + 'px" id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img style="position:relative" id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;position:relative;top:' + topClass + 'px;left:' + leftClass + 'px" id="class'+ k +'">'+ wowclass +'</h3><h4 style="position:relative;top:' + topLvl + 'px;left:' + leftLvl + 'px" id="lvl'+ k +'">'+ lvl +'</h4></div>'
 				}
 				if (j == arrayRank4.length - 1) {
-					resultingInnerHtmlRank4 += '</div><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr></h2>'
+					resultingInnerHtmlRank4 += '<h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr width="30%" align="left"></h2></div>'
 				}
 			}
 		}		
@@ -294,7 +295,7 @@ function workit(jsonClasses, jsonGuild) {
 					resultingInnerHtmlRank5 += '<div style="display: inline-block;"><img style="position:relative;top:' + topImg + 'px;left:' + leftImg + 'px" id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img style="position:relative" id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;position:relative;top:' + topClass + 'px;left:' + leftClass + 'px" id="class'+ k +'">'+ wowclass +'</h3><h4 style="position:relative;top:' + topLvl + 'px;left:' + leftLvl + 'px" id="lvl'+ k +'">'+ lvl +'</h4></div>'
 				}
 				if (j == arrayRank5.length - 1) {
-					resultingInnerHtmlRank5 += '</div><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr></h2>'
+					resultingInnerHtmlRank5 += '<h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr width="30%" align="left"></h2></div>'
 				}
 			}
 		}
@@ -318,7 +319,7 @@ function workit(jsonClasses, jsonGuild) {
 					resultingInnerHtmlRank6 += '<div style="display: inline-block;"><img style="position:relative;top:' + topImg + 'px;left:' + leftImg + 'px" id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img style="position:relative" id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;position:relative;top:' + topClass + 'px;left:' + leftClass + 'px" id="class'+ k +'">'+ wowclass +'</h3><h4 style="position:relative;top:' + topLvl + 'px;left:' + leftLvl + 'px" id="lvl'+ k +'">'+ lvl +'</h4></div>'
 				}
 				if (j == arrayRank6.length - 1) {
-					resultingInnerHtmlRank6 += '</div><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr></h2>'
+					resultingInnerHtmlRank6 += '<h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr width="30%" align="left"></h2></div>'
 				}
 			}
 		}
@@ -342,7 +343,7 @@ function workit(jsonClasses, jsonGuild) {
 					resultingInnerHtmlRank7 += '<div style="display: inline-block;"><img style="position:relative;top:' + topImg + 'px;left:' + leftImg + 'px" id="img' + k + '" src=' + thumbnail + ' width="'+ imgWidthAndHeight +'" height="'+ imgWidthAndHeight +'"></img><img style="position:relative" id="frame' + k + '" src=' + frame + ' width="'+ frameWidthAndHeight +'" height="'+ frameWidthAndHeight +'"></img><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ charName +'</h2><h3 style="color:#a6a6a6;position:relative;top:' + topClass + 'px;left:' + leftClass + 'px" id="class'+ k +'">'+ wowclass +'</h3><h4 style="position:relative;top:' + topLvl + 'px;left:' + leftLvl + 'px" id="lvl'+ k +'">'+ lvl +'</h4></div>'
 				}
 				if (j == arrayRank7.length - 1) {
-					resultingInnerHtmlRank7 += '</div><h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr></h2>'
+					resultingInnerHtmlRank7 += '<h2 style="position:relative;top:' + topCharName + 'px;left:' + leftCharName + 'px" id="txt'+ k +'">'+ currentRank +'<hr width="30%" align="left"></h2></div>'
 				}
 			}
 		}
@@ -384,42 +385,6 @@ function workit(jsonClasses, jsonGuild) {
 
 	var idealsHeight = $("#ideals").height()
 	
-	//console.log(resultingInnerHtmlRank3)
-	
-	
-	
-/*
-	for (var k = 1; k <= lines; k++) {
-		for (var i = 0; i < maxPortraitsPerLine; i++) {
-			var currentIdImg = "img" + currentItemTracker;
-			var currentIdFrame = "frame" + currentItemTracker;
-			var currentIdText = "txt" + currentItemTracker;
-			var currentIdClass = "class" + currentItemTracker;
-			var currentIdLvl = "lvl" + currentItemTracker;
-			var leftOffsetImg = baseLeftImg;
-			var leftOffsetFrame = baseLeftFrame;
-			
-			
-			baseLeftImg = leftOffsetImg + frameWidthAndHeight + offsetX;
-			baseLeftFrame = leftOffsetFrame + frameWidthAndHeight + offsetX;
-			
-			repositionElement(currentIdImg, leftOffsetImg + "px", numYimg + "px");
-			repositionElement(currentIdFrame, leftOffsetFrame + "px", numYframe + "px");
-			repositionElement(currentIdText, (leftOffsetImg) + "px", numYtext + "px");
-			repositionElement(currentIdClass, (leftOffsetImg) + "px", numYclass + "px");
-			repositionElement(currentIdLvl, (leftOffsetImg + 56) + "px", numYlvl + "px");
-			currentItemTracker++
-		}
-		numYimg = numYimg + numOffsetY
-		numYframe = numYframe + numOffsetY
-		numYtext = numYtext + numOffsetY
-		numYclass = numYclass + numOffsetY
-		numYlvl = numYlvl + numOffsetY
-
-		baseLeftImg = 54
-		baseLeftFrame = 30
-	}
-*/
 	
 }
 function returnWowClass(jsonClasses, wowclass) {
