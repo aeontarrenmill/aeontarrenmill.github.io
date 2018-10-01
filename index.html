@@ -35,6 +35,19 @@
 
 
 <script type="text/javascript">
+var titleAeon = document.createElement('div');
+	titleAeon.setAttribute("id", "titleAeon");
+	titleAeon.innerHTML = "<h1 style=\"font-size:500%;left:45%;position:absolute\">AeoN";
+	document.body.appendChild(titleAeon);
+	
+	var ideals = "<div id=\"ideals\" style=\"left:5%;\"><h2><ul><li>We are a guild made up of 25-45 year olds with wives/gf’s/kids/work.<br>Some of us have been playing for 11 years.<br>Therefore we do not commit to anything.</li><li>We do however try to get together for mythic dungeons or whatever but there are no guarantees.</li><li>It is important for us that you understand this, so there are no surprises later.</li><li>It is also important to understand that for us time is limited.<br>Therefore, when joining up with guildies having fun is important but it is also important to not waste each other’s time.</li><li>This means that on fights you have to try your best.<br>Making mistakes is human and acceptable as long as you don’t stand in the fire intentionally because you are a dps whore.</li><li>This guild will never be a progression guild.<br>Any attempt to push the guild into such direction that would change our casual view will not be accepted.</li></ul><p>You can contact Spiritbull on Tarren Mill/Dentarg or real ID:&nbsp;Chronos #2824</p><p>Cheers</p></h2></div>"
+var divContainer = document.createElement('div');
+divContainer.setAttribute("id", "divContainer");
+	
+divContainer.innerHTML = ideals;
+document.body.appendChild(divContainer)
+repositionElement("divContainer", "30px", "150px");
+divContainer.style.display = "inline-block"
 
 startApiCallGuild()
 
@@ -92,12 +105,7 @@ function workit(jsonClasses, jsonGuild) {
 	var line = 1;
 	var resultingInnerHtml;
 
-	var titleAeon = document.createElement('div');
-	titleAeon.setAttribute("id", "titleAeon");
-	titleAeon.innerHTML = "<h1 style=\"font-size:500%;left:45%;position:absolute\">AeoN";
-	document.body.appendChild(titleAeon);
 	
-	var ideals = "<div id=\"ideals\" style=\"left:5%;\"><h2><ul><li>We are a guild made up of 25-45 year olds with wives/gf’s/kids/work.<br>Some of us have been playing for 11 years.<br>Therefore we do not commit to anything.</li><li>We do however try to get together for mythic dungeons or whatever but there are no guarantees.</li><li>It is important for us that you understand this, so there are no surprises later.</li><li>It is also important to understand that for us time is limited.<br>Therefore, when joining up with guildies having fun is important but it is also important to not waste each other’s time.</li><li>This means that on fights you have to try your best.<br>Making mistakes is human and acceptable as long as you don’t stand in the fire intentionally because you are a dps whore.</li><li>This guild will never be a progression guild.<br>Any attempt to push the guild into such direction that would change our casual view will not be accepted.</li></ul><p>You can contact Spiritbull on Tarren Mill/Dentarg or real ID:&nbsp;Chronos #2824</p><p>Cheers</p></h2></div>"
 	
 	
 	var arrayRank0 = []
@@ -131,13 +139,7 @@ function workit(jsonClasses, jsonGuild) {
 	
 
 
-	var divContainer = document.createElement('div');
-	divContainer.setAttribute("id", "divContainer");
 	
-	divContainer.innerHTML = ideals;
-	document.body.appendChild(divContainer)
-	repositionElement("divContainer", "30px", "150px");
-	divContainer.style.display = "inline-block"
 	
 	
 	var topImg = -46;
