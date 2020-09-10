@@ -31,10 +31,8 @@
 </head>
 
 <body>
-
-
 	<script type="text/javascript">
-		var key = "erj874w9mr4263tpk4xn62dqvykwd8s8"
+
 		var titleAeon = document.createElement('div');
 		titleAeon.setAttribute("id", "titleAeon");
 		titleAeon.innerHTML = "<h1 style=\"font-size:500%;left:45%;position:absolute\">AeoN";
@@ -49,19 +47,15 @@
 		repositionElement("divContainer", "30px", "150px");
 		divContainer.style.display = "inline-block"
 
-		// startApiCallGuild()
+		let responseToken = await fetch("https://85.186.1.129:7777/token");
 
-		async () => {
-			await fetch("https://85.186.1.129:7777/token", {
-				method: 'get'
-			})
-				.then(function () {
-					console.log(data)
-				})
-				.catch(function (error) {
-					console.log('Request failed', error);
-				});
+		if (responseToken.ok) { // if HTTP-status is 200-299
+			// get the response body (the method explained below)
+			let token = await response.text();
+			console.log(token)
 		}
+
+
 		// function startApiCallGuild() {
 		// 	var xhttp = new XMLHttpRequest();
 		// 	xhttp.onreadystatechange = function () {
