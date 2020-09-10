@@ -47,13 +47,16 @@
 		repositionElement("divContainer", "30px", "150px");
 		divContainer.style.display = "inline-block"
 
-		let responseToken = await fetch("https://85.186.1.129:7777/token");
+		async () => {
+			let responseToken = await fetch("https://85.186.1.129:7777/token");
 
-		if (responseToken.ok) { // if HTTP-status is 200-299
-			// get the response body (the method explained below)
-			let token = await response.text();
-			console.log(token)
+			if (responseToken.ok) { // if HTTP-status is 200-299
+				// get the response body (the method explained below)
+				let token = await response.text();
+				console.log(token)
+			}
 		}
+
 
 
 		// function startApiCallGuild() {
