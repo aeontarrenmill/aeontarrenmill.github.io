@@ -47,7 +47,8 @@
 		repositionElement("divContainer", "30px", "150px");
 		divContainer.style.display = "inline-block"
 
-		async () => {
+		go()
+		async function go() {
 			let responseToken = await fetch("https://85.186.1.129:7777/token");
 
 			if (responseToken.ok) { // if HTTP-status is 200-299
