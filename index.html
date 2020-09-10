@@ -53,7 +53,7 @@
 
 			if (responseToken.ok) { // if HTTP-status is 200-299
 				// get the response body (the method explained below)
-				let token = await response.text();
+				let token = await responseToken.text();
 				console.log(token)
 			}
 		}
